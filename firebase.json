@@ -1,0 +1,9 @@
+{
+  "firebase": "moy",
+  "public": "C:\\Users\\Rodolfo\\Desktop\\webfire",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
