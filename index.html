@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Controlling 3 leds</title>
+		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
+		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/icons.css" />
+		<link rel="stylesheet" type="text/css" href="css/style2.css" />
+		<script src="js/modernizr.custom.js"></script>
+
+		
+		<link rel="shortcut icon" href="favicon2.ico" type="image/x-icon">
+		<link rel="icon" href="favicon2.ico" type="image/x-icon">
+
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+		<script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+
+		<script type="text/javascript">
+var myFirebaseRef = new Firebase('https://moy.firebaseio.com/');
+    // myFirebaseRef.set({
+    //   led1: "off",
+    //   led2: "off",
+    //   led3: "off",
+    //   location: {
+    //     city: "Ciudad Bolivar",
+    //     state: "Bolivar",
+    //     zip: 8001
+    //   }
+    // });
+    $(document).ready(function () {
+      
+      //led 1 on
+      $("#btn_enviar").click(function(){
+            myFirebaseRef.set({
+              led1: "on",
+              author: "web"
+            });
+            myFirebaseRef.child("led1").on("value", function(snapshot) {
+              estatusJs1 = snapshot.val();  // Alerts "San Francisco"
+            });
+            document.getElementById('contenido1').innerHTML = estatusJs1;       
+      });
+      //led 1 off
+      $("#btn_enviar2").click(function(){
+            estatusJs1 = "off";
+            document.getElementById('contenido1').innerHTML = estatusJs1; 
+        
+            myFirebaseRef.set({
+              led1: "off",
+              author: "web"            
+         
+            });
+            myFirebaseRef.child("led1").on("value", function(snapshot) {
+              estatusJs1 = snapshot.val();  // Alerts "San Francisco"
+            });
+            document.getElementById('contenido1').innerHTML = estatusJs1; 
+      });
+      //led 2 on
+      $("#btn_enviar3").click(function(){
+            estatusJs2 = "on";
+            document.getElementById('contenido2').innerHTML = estatusJs2;           
+            myFirebaseRef.set({
+              led2: "on",              
+              
+            });
+            myFirebaseRef.child("led2").on("value", function(snapshot) {
+              estatusJs1 = snapshot.val();  // Alerts "San Francisco"
+            });
+            document.getElementById('contenido2').innerHTML = estatusJs2; 
+      });
+        //led 2 off
+       $("#btn_enviar4").click(function(){
+            estatusJs2 = "off";
+            document.getElementById('contenido2').innerHTML = estatusJs2;             
+            myFirebaseRef.set({
+              led2: "off",              
+              
+            });
+            myFirebaseRef.child("led2").on("value", function(snapshot) {
+              estatusJs1 = snapshot.val();  // Alerts "San Francisco"
+            });
+            document.getElementById('contenido2').innerHTML = estatusJs2; 
+      });
+       //led 3 on
+       $("#btn_enviar5").click(function(){
+        
+            estatusJs3 = "on";
+            document.getElementById('contenido3').innerHTML = estatusJs3; 
+            myFirebaseRef.set({
+              led3: "on",              
+              
+            });
+            myFirebaseRef.child("led3").on("value", function(snapshot) {
+              estatusJs1 = snapshot.val();  // Alerts "San Francisco"
+            });
+            document.getElementById('contenido3').innerHTML = estatusJs3; 
+      });
+       //led 3 off
+       $("#btn_enviar6").click(function(){
+        
+            estatusJs3 = "off";
+            document.getElementById('contenido3').innerHTML = estatusJs3; 
+            myFirebaseRef.set({
+              led3: "off",              
+              
+            });
+            myFirebaseRef.child("led3").on("value", function(snapshot) {
+              estatusJs1 = snapshot.val();  // Alerts "San Francisco"
+            });
+            document.getElementById('contenido3').innerHTML = estatusJs3; 
+      });   
+    });
+    var estatus = myFirebaseRef.child("led1").on("value", function(snapshot) {
+         console.log(snapshot.val());  // Alerts "San Francisco"
+    });
+    var estatus2 = myFirebaseRef.child("led2").on("value", function(snapshot) {
+         console.log(snapshot.val());  // Alerts "San Francisco"
+    });
+    var estatus3 = myFirebaseRef.child("led3").on("value", function(snapshot) {
+         console.log(snapshot.val());  // Alerts "San Francisco"
+    });
+    
+</script> 
+
+	</head>
+	<body>
+		<div class="container">
+			<header class="codrops-header">
+				
+				<nav class="codrops-demos">
+					<a href="#" id="btn_enviar">Led 1 On</a>
+					<a class="index2.html"  href="#" id="btn_enviar2">Led1 Off</a>
+					<a href="#" id="btn_enviar3">Led 2 On</a>
+					<a href="#"id="btn_enviar4">Led 2 Off</a>
+					<a href="#" id="btn_enviar5">led 3 On</a>
+					<a href="#" id="btn_enviar6">Led 3 Off</a>
+				</nav>
+
+				<h1>Controlling 3 leds<span>Inspired by Joe Chasinga´s  <br/> <br/> <a href="https://medium.com/code-zen/intro-to-iot-with-arduino-firebase-and-angular-js-ea08c70f41ef" target="blank">Interact With the Web in Real-time Using Arduino, <br/> Firebase and Angular.js</a></h1>
+				<!-- <p class="codrops-links"><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/CreativeLoadingEffects/"><span>Previous Demo</span></a>
+				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16556"><span>Back to the Codrops Article</span></a></span></p> -->
+				<div class="codrops-related">
+					If you enjoyed this , contact me:<br /> <br/>
+					<a href="https://twitter.com/Moycs777" target="blank">Moises Serrano</a><br/> <br/>
+					<a href="mailto:moycs777@gmail.com?Subject=Hello%20again" target="_top" target="blank">moycs777@gmail.com</a><br/>
+					
+				</div>
+			</header>
+			<nav id="bt-menu" class="bt-menu">
+				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+				<ul>
+					<li><a href="#" class="bt-icon icon-zoom">Zoom</a></li>
+					<li><a href="http://moy.firebaseapp.com" class="bt-icon icon-refresh">Refresh</a></li>
+					<li><a href="#" class="bt-icon icon-lock">Lock</a></li>
+					<li><a href="#" class="bt-icon icon-speaker">Sound</a></li>
+					<li><a href="#" class="bt-icon icon-star">Favorite</a></li>
+				</ul>
+			</nav>
+		</div><!-- /container -->
+		
+
+		    <div id="contenido">Led status</div>
+		    <br/>
+		    <table style="width:30%">
+		      <tr>
+		            
+		        <td id="contenido1"></td>
+		      </tr>
+		      <tr>
+		           
+		        <td id="contenido2"></td>
+		      </tr>
+		      <tr>
+		           
+		        <td id="contenido3"></td>
+		      </tr>
+		    </table>
+		    </div>
+	</body>
+	<script src="js/classie.js"></script>
+	<script src="js/borderMenu.js"></script>
+</html>
