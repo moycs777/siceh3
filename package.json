@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "f.js",
-  "scripts" : { "start" : "node server.js" },
-  "dependencies": {
-    "firebase": "^2.0.6",
-    "johnny-five": "^0.8.36"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "firebase": "^2.3.2",
+    "johnny-five": "^0.8.106",
+    "serialport": "^2.0.6"
+  },
+  "devDependencies": {},
   "author": "moises",
   "license": "ISC"
 }

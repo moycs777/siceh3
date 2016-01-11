@@ -1,30 +1,7 @@
 var five = require("johnny-five"),
   board, led;
 
-
 var Firebase = require('firebase');
-
-//
-
-var Service = require('node-windows').Service;
- 
-// Create a new service object 
-var svc = new Service({
-  name:'server',
-  description: 'm',
-  script: 'C:\\Documents and Settings\\Administrador\\Mis documentos\\Siceh\\server.js'
-});
- 
-// Listen for the "install" event, which indicates the 
-// process is available as a service. 
-svc.on('install',function(){
-  svc.start();
-});
- 
-svc.install();
-
-
-//
 
 var myFirebaseRef = new Firebase('https://moy.firebaseio.com/');
 
@@ -33,7 +10,6 @@ myFirebaseRef.set({
               led2: "on",
               led3: "on"
 });
-
 
 //myRootRef.set( ledStatus);
 
@@ -50,7 +26,6 @@ myFirebaseRef.child("led2").on("value", function(snapshot) {
 myFirebaseRef.child("led3").on("value", function(snapshot) {
   console.log(snapshot.val());  // Alerts "San Francisco"
 }); 
-
 
 //Jonny-five section
     // or "./lib/johnny-five" when running from the source
@@ -78,8 +53,6 @@ board.on("ready", function() {
 
   // "on" turns the led _on_
   //led.on();
-
-  
 
    myFirebaseRef.child("led1").on("value", function(snap) {
     if(snap.val() == "on") {
